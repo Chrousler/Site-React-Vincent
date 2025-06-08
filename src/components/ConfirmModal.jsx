@@ -1,16 +1,19 @@
 import React from 'react'
+import ReactDOM from 'react-dom'
 import styles from './ConfirmModal.module.scss'
 
-export default function ConfirmModal({ text, onClose, onConfirm }) {
-  return (
-    <div className={styles.modalOverlay} onClick={onClose}>
-      <div className={styles.modalContent} onClick={e => e.stopPropagation()}>
-        <p>{text}</p>
+export default function ConfirmModal({ isOpen, onClose, onConfirm, message }) {
+  if (!isOpen) return null
+  return ReactDOM.createPortal(
+    <div className={styles.overlay} onClick={onClose}>
+      <div className={styles.modal} onClick={e => e.stopPropagation()}>
+        <p>{message}</p>
         <div className={styles.buttons}>
-          <button className={styles.buttonClose} onClick={onClose}>Закрыть</button>
-          <button className={styles.buttonOpen} onClick={onConfirm}>Открыть</button>
+          <button onClick={onConfirm}>Открыть</button>
+          <button onClick={onClose}>Закрыть</button>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   )
 }

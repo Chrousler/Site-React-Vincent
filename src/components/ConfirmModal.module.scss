@@ -1,49 +1,26 @@
-$bg-dark: rgba(0, 0, 0, 0.85);
-$bg-card: #111;
-$btn-bg: #4a90e2;
-
-.backdrop {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1001;
+/* ConfirmModal.module.scss */
+.overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex; align-items: center; justify-content: center;
 }
-
 .modal {
-  background: $bg-card;
-  color: #fff;             // белый текст
+  background: var(--card-bg);
+  color: var(--text-color);
   padding: 1.5rem;
   border-radius: 12px;
-  max-width: 400px;
-  width: 90%;
+  max-width: 90%;
 }
-
-.title {
-  margin: 0 0 1rem;
-}
-
-.message {
-  margin-bottom: 1.5rem;
-}
-
 .buttons {
-  display: flex;
-  justify-content: flex-end;
-  gap: 0.5rem;
-
+  margin-top: 1rem;
+  display: flex; justify-content: flex-end;
   button {
-    background: $btn-bg;
-    color: #fff;
-    border: none;
+    margin-left: 0.5rem;
     padding: 0.5rem 1rem;
-    border-radius: 6px;
+    border: none;
+    background: var(--text-color);
+    color: var(--bg-color);
     cursor: pointer;
-    transition: background 0.2s;
-    &:hover {
-      background: darken($btn-bg, 10%);
-    }
+    border-radius: 4px;
   }
 }

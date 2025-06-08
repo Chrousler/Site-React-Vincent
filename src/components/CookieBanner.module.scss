@@ -1,19 +1,20 @@
+/* CookieBanner.module.scss */
 .banner {
   position: fixed;
   bottom: 0;
   width: 100%;
-  background: rgba(0,0,0,0.8);
-  color: #fff;
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  color: var(--text-color);
+  padding: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.75rem 1rem;
-  font-size: 0.9rem;
-  z-index: 1000;
   button {
-    background: #4a90e2;
-    border: none;
-    color: #fff;
+    margin-left: 0.5rem;
+    background: none;
+    border: 1px solid var(--text-color);
+    color: var(--text-color);
     padding: 0.5rem 1rem;
     border-radius: 4px;
     cursor: pointer;

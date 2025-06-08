@@ -1,12 +1,12 @@
 import React, { useContext } from 'react'
-import { ThemeContext } from '../context/ThemeContext'
+import { ThemeContext } from '../context/ThemeContext.jsx'
 import styles from './ThemeToggle.module.scss'
 
 export default function ThemeToggle() {
-  const { theme, toggleTheme } = useContext(ThemeContext)
+  const { theme, toggle } = useContext(ThemeContext)
   return (
-    <button className={styles.toggle} onClick={toggleTheme}>
-      {theme === 'light' ? '🌙' : '☀️'}
+    <button className={styles.btn} onClick={toggle} aria-label="Toggle theme">
+      {theme === 'dark' ? '🌞' : '🌜'}
     </button>
   )
 }
