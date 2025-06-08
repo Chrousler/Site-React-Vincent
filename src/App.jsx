@@ -1,31 +1,26 @@
-import React from 'react';
-import { HelmetProvider } from 'react-helmet-async';
-import { ThemeProvider } from './context/ThemeContext';
-import ThemeToggle from './components/ThemeToggle';
-import { CookieBanner } from './components/CookieBanner';
-import { DataNotice } from './components/DataNotice';
-import Preloader from './components/Preloader';
-import HomePage from './pages/HomePage';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import GalleryPage from './pages/GalleryPage';
-import NotFound404 from './pages/NotFound404';
+import React, { useState, useEffect } from 'react'
+import CookieBanner from './components/CookieBanner'
+import DataNotice from './components/DataNotice'
+import Preloader from './components/Preloader'
+import ThemeToggle from './components/ThemeToggle'
+import { HelmetProvider } from 'react-helmet-async'
 
 export default function App() {
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 3500)
+    return () => clearTimeout(timer)
+  }, [])
+
   return (
     <HelmetProvider>
-      <ThemeProvider>
-        <ThemeToggle />
+      <ThemeToggle />
+      {loading ? <Preloader /> : <>
+        <DataNotice text="Этот сайт не собирает ваши данные. Всё создано для людей." />
         <CookieBanner />
-        <DataNotice text="Этот сайт не собирает ваши данные. Всё создано для людей!" />
-        <Preloader />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/gallery" element={<GalleryPage />} />
-            <Route path="*" element={<NotFound404 />} />
-          </Routes>
-        </BrowserRouter>
-      </ThemeProvider>
+        {/* <Routes>…</Routes> */}
+      </>}
     </HelmetProvider>
-  );
+  )
 }

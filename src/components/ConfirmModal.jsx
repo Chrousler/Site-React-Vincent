@@ -1,17 +1,16 @@
-import React from 'react';
-import styles from './ConfirmModal.module.scss';
+import React from 'react'
+import styles from './ConfirmModal.module.scss'
 
-export function ConfirmModal({ title, message, onConfirm, onClose }) {
+export default function ConfirmModal({ text, onClose, onConfirm }) {
   return (
-    <div className={styles.backdrop} onClick={onClose}>
-      <div className={styles.modal} onClick={e => e.stopPropagation()}>
-        <h2 className={styles.title}>{title}</h2>
-        <p className={styles.message}>{message}</p>
+    <div className={styles.modalOverlay} onClick={onClose}>
+      <div className={styles.modalContent} onClick={e => e.stopPropagation()}>
+        <p>{text}</p>
         <div className={styles.buttons}>
-          <button onClick={onConfirm}>Открыть</button>
-          <button onClick={onClose}>Закрыть</button>
+          <button className={styles.buttonClose} onClick={onClose}>Закрыть</button>
+          <button className={styles.buttonOpen} onClick={onConfirm}>Открыть</button>
         </div>
       </div>
     </div>
-  );
+  )
 }
