@@ -1,29 +1,21 @@
-import { useState, useEffect } from "react";
-import styles from "./DataNotice.module.scss";
+import React, { useState, useEffect } from 'react'
+import styles from './DataNotice.module.scss'
 
 export default function DataNotice() {
-  const [show, setShow] = useState(false);
+  const [visible, setVisible] = useState(false)
 
   useEffect(() => {
-    if (!localStorage.getItem("dataNoticeShown")) {
-      setShow(true);
+    const consent = localStorage.getItem('cookieConsent')
+    if (consent === 'yes') {
+      setVisible(true)
+      setTimeout(() => setVisible(false), 4000)
     }
-  }, []);
+  }, [])
 
-  const accept = () => {
-    localStorage.setItem("dataNoticeShown", "yes");
-    setShow(false);
-  };
-
-  if (!show) return null;
-
+  if (!visible) return null
   return (
     <div className={styles.notice}>
-      <p>
-        Этот сайт не собирает ваши данные. Всё создано для людей, которые хотят
-        узнать больше о Vincent Velasco.
-      </p>
-      <button onClick={accept}>Понятно</button>
+      Этот сайт не собирает ваши данные. Всё создано для людей.
     </div>
-  );
+  )
 }

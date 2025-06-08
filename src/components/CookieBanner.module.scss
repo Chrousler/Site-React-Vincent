@@ -1,30 +1,22 @@
+/* CookieBanner.module.scss */
 .banner {
   position: fixed;
-  bottom: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(10px);
-  color: #fff;
-  padding: 1rem 1.5rem;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  z-index: 1000;
-}
-
-.buttons > button {
+  bottom: 0;
+  width: 100%;
   background: var(--card-bg);
-  border: 1px solid var(--card-border);
   backdrop-filter: blur(10px);
-  padding: 0.5rem 1rem;
-  color: var(--text-primary);
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.buttons > button:hover {
-  background: var(--card-border);
+  color: var(--text-color);
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  button {
+    margin-left: 0.5rem;
+    background: none;
+    border: 1px solid var(--text-color);
+    color: var(--text-color);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+  }
 }

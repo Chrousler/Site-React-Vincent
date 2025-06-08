@@ -2,26 +2,30 @@ import React, { useState, useEffect } from 'react'
 import styles from './CookieBanner.module.scss'
 
 export default function CookieBanner() {
-  const [visible, setVisible] = useState(false)
+  const [shown, setShown] = useState(false)
 
   useEffect(() => {
-    const consent = localStorage.getItem('cookie-consent')
-    if (!consent) setVisible(true)
+    if (!localStorage.getItem('cookieConsent')) {
+      setShown(true)
+    }
   }, [])
 
-  const handleChoice = (choice) => {
-    localStorage.setItem('cookie-consent', choice)
-    setVisible(false)
+  const accept = () => {
+    localStorage.setItem('cookieConsent', 'yes')
+    setShown(false)
+  }
+  const decline = () => {
+    localStorage.setItem('cookieConsent', 'no')
+    setShown(false)
   }
 
-  if (!visible) return null
-
+  if (!shown) return null
   return (
     <div className={styles.banner}>
-      <span>Мы используем cookie для улучшения вашего опыта на сайте.</span>
-      <div className={styles.buttons}>
-        <button onClick={() => handleChoice('accepted')}>Принять</button>
-        <button onClick={() => handleChoice('rejected')}>Отклонить</button>
+      <p>Этот сайт не собирает ваши данные. Всё создано для людей.</p>
+      <div>
+        <button onClick={accept}>Принять</button>
+        <button onClick={decline}>Отклонить</button>
       </div>
     </div>
   )
