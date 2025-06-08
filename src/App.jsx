@@ -1,25 +1,40 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { HelmetProvider } from 'react-helmet-async'
+import { Routes, Route } from 'react-router-dom'
+
 import ThemeToggle from './components/ThemeToggle.jsx'
 import CookieBanner from './components/CookieBanner.jsx'
 import DataNotice from './components/DataNotice.jsx'
 import ConfirmModal from './components/ConfirmModal.jsx'
-import GalleryPage from './pages/GalleryPage.jsx'
+
 import HomePage from './pages/HomePage.jsx'
+import GalleryPage from './pages/GalleryPage.jsx'
 import NotFound404 from './pages/NotFound404.jsx'
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 
 export default function App() {
-  const [modal, setModal] = useState({ open: false, link: '' })
-  const location = useLocation()
+  const [isModalOpen, setModalOpen] = useState(false)
+  const [modalLink, setModalLink] = useState('')
 
-  const handleLink = url => {
-    setModal({ open: true, link: url })
+  // запускаем прелоадер
+  const [loading, setLoading] = useState(true)
+  useEffect(() => {
+    const t = setTimeout(() => setLoading(false), 2500)
+    return () => clearTimeout(t)
+  }, [])
+
+  // обработчик клика по ссылке
+  const handleLinkClick = url => {
+    setModalLink(url)
+    setModalOpen(true)
   }
-  const confirm = () => {
-    window.open(modal.link, '_blank')
-    setModal({ open: false, link: '' })
+
+  const handleConfirm = () => {
+    window.open(modalLink, '_blank')
+    setModalOpen(false)
+    setModalLink('')
   }
+
+  if (loading) return <ConfirmModal isOpen={false} /> /* или Preloader */
 
   return (
     <HelmetProvider>
@@ -28,14 +43,14 @@ export default function App() {
       <DataNotice />
 
       <ConfirmModal
-        isOpen={modal.open}
-        message={`Вы уверены, что хотите перейти на: ${modal.link}?`}
-        onConfirm={confirm}
-        onClose={() => setModal({ open: false, link: '' })}
+        isOpen={isModalOpen}
+        message={`Вы уверены, что хотите перейти на: ${modalLink}?`}
+        onConfirm={handleConfirm}
+        onClose={() => setModalOpen(false)}
       />
 
       <Routes>
-        <Route path="/" element={<HomePage onLinkClick={handleLink} />} />
+        <Route path="/" element={<HomePage onLinkClick={handleLinkClick} />} />
         <Route path="/gallery" element={<GalleryPage />} />
         <Route path="*" element={<NotFound404 />} />
       </Routes>
