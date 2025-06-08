@@ -1,0 +1,17 @@
+/* src/components/ThemeToggle.module.scss */
+.toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background: var(--card-bg);
+  color: var(--accent-color);
+  border: 1px solid var(--card-border);
+  padding: 0.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10001;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+.toggle:hover {
+  filter: brightness(1.1);
+}

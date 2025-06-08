@@ -1,0 +1,55 @@
+.logo {
+  cursor: pointer;
+  display: inline-block;
+  /* немного отступов для кликабельности */
+  padding: 0.5rem;
+}
+
+.img {
+  width: 48px;
+  height: auto;
+}
+
+.eggBackdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10002;
+}
+
+.eggModal {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  padding: 2rem;
+  border-radius: 16px;
+  text-align: center;
+  color: var(--text-primary);
+  max-width: 90%;
+  width: 320px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+
+.eggModal h2 {
+  margin: 0 0 1rem;
+}
+
+.eggModal p {
+  margin-bottom: 1.5rem;
+}
+
+.eggModal button {
+  background: var(--accent-color);
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: filter 0.2s ease;
+}
+
+.eggModal button:hover {
+  filter: brightness(1.1);
+}

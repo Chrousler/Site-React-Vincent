@@ -1,0 +1,15 @@
+:root {
+  --bg-gradient-start: #1a1a2e;
+  --bg-gradient-end:   #0f3460;
+  --text-primary:      rgba(255, 255, 255, 0.9);
+  --card-bg:           rgba(255, 255, 255, 0.05);
+  --card-border:       rgba(255, 255, 255, 0.1);
+}
+
+body.light {
+  --bg-gradient-start: #f0f0f0;
+  --bg-gradient-end:   #ffffff;
+  --text-primary:      #213547;
+  --card-bg:           rgba(0, 0, 0, 0.04);
+  --card-border:       rgba(0, 0, 0, 0.08);
+}

@@ -1,0 +1,25 @@
+/* src/pages/NotFound404.module.scss */
+.wrapper {
+  padding: 4rem 1rem;
+  text-align: center;
+}
+.title {
+  font-size: 2rem;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+.text {
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+}
+.button {
+  padding: 0.75rem 1.5rem;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.button:hover {
+  background: rgba(255,255,255,0.15);
+}
