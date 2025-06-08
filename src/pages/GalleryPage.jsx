@@ -1,16 +1,12 @@
-import React from "react";
-import { Helmet } from "react-helmet-async";
-import styles from "./GalleryPage.module.scss";
+import React from 'react';
+import { Helmet } from 'react-helmet-async';
+import styles from './GalleryPage.module.scss';
+
+// Эта магия Vite подтянет все JPG из public/assets/screenshots
+const modules = import.meta.glob('/assets/screenshots/*.jpg', { eager: true, as: 'url' });
+const images = Object.values(modules);
 
 export default function GalleryPage() {
-  // 1. Берём все .jpg/.png из папки и сразу загружаем (eager: true)
-  const modules = import.meta.glob(
-    "../assets/screenshots/*.{jpg,png}",
-    { eager: true }
-  );
-  // 2. Из объекта { path: module } собираем массив URL
-  const images = Object.values(modules).map((mod) => mod.default);
-
   return (
     <>
       <Helmet>
@@ -19,7 +15,6 @@ export default function GalleryPage() {
           name="description"
           content="Галерея скриншотов игр от Vincent Velasco."
         />
-        <meta property="og:url" content="http://localhost:5173/gallery" />
       </Helmet>
 
       <div className={styles.container}>

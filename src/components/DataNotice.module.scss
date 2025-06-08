@@ -1,43 +1,18 @@
 .notice {
   position: fixed;
-  bottom: 2rem;
+  bottom: 1rem;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(255,255,255,0.15);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.3);
-  border-radius: 12px;
-  padding: 1rem 1.5rem;
+  background: rgba(0, 0, 0, 0.75);
   color: #fff;
-  box-shadow: 0 4px 30px rgba(0,0,0,0.2);
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  animation: fadeIn 0.5s ease-out forwards;
-  z-index: 1000;
-}
-
-.notice p {
-  margin: 0;
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
   font-size: 0.9rem;
-}
-
-.notice button {
-  background: rgba(255,255,255,0.3);
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  cursor: pointer;
-  color: #fff;
-  transition: background 0.2s;
-}
-
-.notice button:hover {
-  background: rgba(255,255,255,0.5);
+  z-index: 1000;
+  animation: fadeIn 0.5s ease;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateX(-50%) translateY(20px); }
-  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+  from { opacity: 0; transform: translate(-50%, 20px); }
+  to   { opacity: 1; transform: translate(-50%, 0); }
 }
