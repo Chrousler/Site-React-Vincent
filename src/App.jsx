@@ -16,6 +16,8 @@ import NotFound404 from './pages/NotFound404'
 export default function App() {
   const [loading, setLoading] = useState(true)
 
+/* TODO: здесь скоро появится баннер "Никто ваши данные не собирает" */
+
   return (
     <HelmetProvider>
       <ThemeToggle />
